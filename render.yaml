@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: cms-system
+    env: node
+    plan: starter # Note: SQLite persistence requires a starter plan or higher on Render
+    buildCommand: npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: 18.16.0
+      - key: PORT
+        value: 10000
+    disk:
+      name: cms-data
+      mountPath: /opt/render/project/src/data
+      sizeGB: 1
